@@ -79,8 +79,9 @@ class GithubScrapper:
         
 
 
+username = input('Enter username:')
 
 if __name__ == '__main__':
-    get = GithubScrapper(username='soumilshah1995')
+    get = GithubScrapper(username=username)
     get.getRepo()
     get.saveCsv()
