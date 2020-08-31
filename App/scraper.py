@@ -78,10 +78,3 @@ class GithubScrapper:
         return df.to_csv('Repo.csv')
         
 
-
-username = input('Enter username:')
-
-if __name__ == '__main__':
-    get = GithubScrapper(username=username)
-    get.getRepo()
-    get.saveCsv()
