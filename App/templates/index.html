@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h3 style="margin-left: 500px; margin-top: 80px;">Welcome to Github Repo Downloader</h3>
+    <form method="POST" class="form-inline" style="height: 10vh; margin-left: 600px;">
+        
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="inputPassword2" class="sr-only">Password</label>
+          <input type="text" class="form-control" id="inputPassword2" placeholder="Github username" name="username">
+        </div>
+        <button type="submit" class="btn btn-primary mb-2" style="padding: 10px;">Get Repo</button>
+      </form>
+
+{% endblock content %}
