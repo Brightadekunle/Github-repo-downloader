@@ -78,3 +78,6 @@ class GithubScrapper:
         return df.to_csv('Repo.csv')
         
 
+if __name__ == '__main__':
+    get = GithubScrapper(username='Brightadekunle', pages=1)
+    get.getRepo()
