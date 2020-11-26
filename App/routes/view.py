@@ -1,10 +1,10 @@
 import io
+import pdfkit
 from io import BytesIO
 from . import main
 from App.scraper import GithubScrapper
 from flask import Flask, render_template, session, redirect, url_for, send_file, request
 from .form import DownloadForm
-
 
 
 @main.route('/', methods=['GET', 'POST'])
@@ -31,3 +31,7 @@ def download():
         return send_file(BytesIO(towrite.getvalue()), attachment_filename='Repo.xlsx', as_attachment=True)
     return render_template('download.html', data=data, form=form)
 
+
+@main.route('/download-pdf', methods=['GET, POST'])
+def download_pdf():
+    pass
