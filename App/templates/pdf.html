@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block content %}
+
+<style>
+  #table {
+    width: 70%;
+    margin: 0 auto;
+  }
+</style>
+
+<table id="table" class="table">
+  <thead>
+    <tr>
+      <th scope="col">Repository Name</th>
+      <th scope="col">Url</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for x in data %}
+    <tr>
+      <td>{{x[0]}}</td>
+      <td><a href="{{x[1]}}">{{x[1]}}</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}

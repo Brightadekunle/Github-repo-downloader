@@ -1,55 +1,52 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
+<div id="buttons">
+  <form method="POST" action="{{url_for('main.download')}}">
+    <div id="wrapper">{{form.download(class="btn btn-primary")}}</div>
+  </form>
 
-<form method="POST" action="{{url_for('main.download')}}">
-    <div id="wrapper">
+  <form action="{{url_for('main.download_pdf')}}" method="POST">
+    <div id="wrapper">{{form.download_pdf(class="btn btn-success")}}</div>
+  </form>
+</div>
 
-        {{form.download(class="btn btn-primary")}}
-    </div>
-
-</form>
-
-
-
-<br>
-<br>
-<br>
-
-<table class="table table-responsive table-striped table-hover">
-
-    <thead class="thead-dark">
-    <tr>
-        <th scope="col">Repository Name </th>
-        <th scope="col">Url</th>
-        <!-- <th scope="col">Handle</th> -->
-    </tr>
-    </thead>
-
-    <tbody>
-    {% for x in data %}
-    <tr>
-        <td>{{x[0]}}</td>
-        <td>
-            <a href={{x[1]}}>{{x[1]}}</a>
-        </td>
-
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
+<br />
+<br />
+<br />
 
 <style>
-
-    .result{
-    text-align:center;
-    }
-
-#wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  #buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 25px;
+  }
+  #table {
+    width: 70%;
+    margin: 0 auto;
+  }
 </style>
+
+<table id="table" class="table">
+  <thead>
+    <tr>
+      <th scope="col">Repository Name</th>
+      <th scope="col">Url</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for x in data %}
+    <tr>
+      <td>{{x[0]}}</td>
+      <td><a href="{{x[1]}}">{{x[1]}}</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
 {% endblock content %}
