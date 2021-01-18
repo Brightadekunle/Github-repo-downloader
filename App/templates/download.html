@@ -1,52 +1,56 @@
 {% extends 'base.html' %} {% block content %}
 
-<div id="buttons">
-  <form method="POST" action="{{url_for('main.download')}}">
-    <div id="wrapper">{{form.download(class="btn btn-primary")}}</div>
-  </form>
+<!-- Bootstrap CSS -->
+<link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+   
 
-  <form action="{{url_for('main.download_pdf')}}" method="POST">
-    <div id="wrapper">{{form.download_pdf(class="btn btn-success")}}</div>
-  </form>
+<div class="container">
+  <div class="button">
+      <form action="{{ url_for('main.download') }}" method="POST">
+          <button class="btn btn-primary">Download csv</button>
+      </form>
+      <form action="{{ url_for('main.download_pdf') }}" method="POST">
+          <button class="btn btn-secondary">Download pdf</button>
+      </form>
+  </div>
+
+  <table id="table" class="table">
+      <thead>
+          <tr>
+          <th scope="col">Repository Name</th>
+          <th scope="col">Url</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for x in data %}
+          <tr>
+          <td>{{x[0]}}</td>
+          <td><a href="{{x[1]}}">{{x[1]}}</a></td>
+          </tr>
+          {% endfor %}
+      </tbody>
+      </table>
 </div>
 
-<br />
-<br />
-<br />
-
-<style>
-  #buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  #wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 25px;
-  }
-  #table {
-    width: 70%;
-    margin: 0 auto;
-  }
-</style>
-
-<table id="table" class="table">
-  <thead>
-    <tr>
-      <th scope="col">Repository Name</th>
-      <th scope="col">Url</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for x in data %}
-    <tr>
-      <td>{{x[0]}}</td>
-      <td><a href="{{x[1]}}">{{x[1]}}</a></td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+<script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
 
 {% endblock content %}
